@@ -1,0 +1,128 @@
+<div class="gameboard">
+<div class="playermode">
+        <div class="player">
+           <button  style="margin-right:120px;
+           margin-left:10px" *ngIf="div3" (click)="div1Function()"> 1 PLAYER</button>
+           <button  *ngIf="div4" (click)="div2Function()">2 PLAYER</button>
+        </div>
+    
+             <div class="1pl" *ngIf="div1" >
+                 <input class="inp" #newPlayer
+                    
+                     newHero.value='' required>
+                    <button class="btn1" (click)="addPlayer(newPlayer.value)">P1</button>
+                    
+                </div>
+            <div class="2pl"     *ngIf="div2">
+                    <input  class="inp" #newPlayer
+                    
+                    newHero.value=''  required>
+                    <button  class="btn1"  (click)="addPlayer(newPlayer.value)">P1</button>
+                    <input  class="inp" #newPlayer1
+                    
+                    newHero.value='' required >
+                   <button  class="btn1" (click)="addPlayer(newPlayer1.value)">P2</button>
+    
+    
+            </div>
+                
+    </div>
+<div class="d-inline  ">
+        <div class="board">
+                <div>
+                        <square *ngFor="let square of squares | slice: 0:3 ;let i=index" [value]="square"
+                        (playerClick)="clickHandler(i)" [ngClass]="{
+                            'noClick': this.squares[i]!==null,
+                            '': this.squares[i]===null
+                          }">> </square>
+                </div>
+                <div>
+                    <square *ngFor="let square of squares | slice: 3:6 ;let i=index" [value]="square"
+                    (playerClick)="clickHandler(i+3)"
+                    [ngClass]="{
+                    'noClick': this.squares[i]!==null,
+                    '': this.squares[i]===null
+                  }"> </square>
+                </div>
+                <div>
+                    <square *ngFor="let square of squares | slice: 6 ;let i=index" [value]="square"
+                    (playerClick)="clickHandler(i+6)" 
+                    [ngClass]="{
+                        'noClick': this.squares[i]!==null,
+                        '': this.squares[i]===null
+                      }">> </square>
+                </div>
+    
+    </div>
+
+
+</div>
+
+
+
+        <div class="log">
+                <ul class="logs">
+                        <h6>Logs</h6>
+                        <li *ngFor="let array of logsat.logs;let i = index " (click)="onSelect(i)"> 
+                           
+                                 
+                                       
+                                Lojtari: {{array.player}}
+                                Pozicioni:  {{array.position}}
+                                Simboli: {{array.turn}} 
+                             
+                                   
+                                </li>
+            
+                </ul>
+                    
+                <div >
+                        <div *ngIf="show">
+                            <div class="board">
+                                    <div >
+                                            <square  *ngFor="let square of squareLog | slice: 0:3 ;let i=index" [value]="square"
+                                            > </square>
+                                    </div>
+                                    <div>
+                                            <square  *ngFor="let square of squareLog | slice: 3:6 ;let i=index" [value]="square"
+                                            > </square>
+                                    </div>
+                                    <div>
+                                            <square  *ngFor="let square of squareLog | slice: 6 ;let i=index" [value]="square"
+                                            > </square>
+                                    </div>
+                                
+                            </div>
+                               
+                        </div>
+                
+                    </div>
+                
+                
+            </div>
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+<button class="btn" (click)='newGame()'>New Game </button>
+
+<div class="msg">
+    <div *ngIf="gameover">
+   <h2> Fituesi eshte {{fitues|uppercase}}</h2>
+    </div>
+
+    <div *ngIf="winner==='tie'">
+        Barazim
+    </div>
+</div>
+

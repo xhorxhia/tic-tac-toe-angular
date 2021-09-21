@@ -1,0 +1,10 @@
+.board{
+    width: 100;
+    display: flex;
+    margin-right: 110px;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    
+}
+
+
